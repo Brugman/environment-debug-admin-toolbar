@@ -1,6 +1,6 @@
 <?php
 /**
- * Environment & Debug Admin Toolbar
+ * Environment Debug Admin Toolbar
  *
  * Display your environment and debug info in the toolbar.
  *
@@ -11,7 +11,7 @@
  * @link              https://mediumrare.dev/
  *
  * @wordpress-plugin
- * Plugin Name:       Environment & Debug Admin Toolbar
+ * Plugin Name:       Environment Debug Admin Toolbar
  * Description:       Display your environment and debug info in the toolbar.
  * Version:           1.0.0
  * Requires at least: 6.2
