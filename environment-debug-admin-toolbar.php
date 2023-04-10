@@ -188,7 +188,7 @@ if ( ! class_exists( 'EDT' ) ) {
 		 * @return void
 		 */
 		public function register_toolbar( $wp_admin_bar ) {
-			if ( ! current_user_can( 'manage_options' ) ) {
+			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
 
