@@ -17,3 +17,7 @@ Display your environment and debug info in the toolbar.
 = 1.0.0 =
 * Initial release.
 
+== Contribute ==
+
+If you want to contribute, development takes place on [GitHub](https://github.com/Brugman/environment-debug-admin-toolbar).
+
