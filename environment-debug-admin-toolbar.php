@@ -7,7 +7,7 @@
  * @package           EnvDebugToolbar
  * @author            Medium Rare
  * @copyright         2023 Medium Rare
- * @license           GPL-2.0-or-later
+ * @license           GPL-3.0
  * @link              https://mediumrare.dev/
  *
  * @wordpress-plugin
@@ -18,8 +18,8 @@
  * Requires PHP:      8.0
  * Author:            Medium Rare
  * Author URI:        https://mediumrare.dev/
- * License:           GPL v2 or later
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPL v3
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       environment-debug-toolbar
  * Domain Path:       /languages
  */
