@@ -43,9 +43,9 @@ if ( ! class_exists( 'EDT' ) ) {
 		public function __construct() {
 		}
 
-		//> Unsorted Helpers.
+		// > Unsorted Helpers.
 
-		//> Misc Helpers.
+		// > Misc Helpers.
 
 		/**
 		 * D
@@ -70,7 +70,7 @@ if ( ! class_exists( 'EDT' ) ) {
 			exit;
 		}
 
-		//> Toolbar Helpers.
+		// > Toolbar Helpers.
 
 		/**
 		 * Get_env
@@ -150,7 +150,7 @@ if ( ! class_exists( 'EDT' ) ) {
 			return $html;
 		}
 
-		//> Hooks.
+		// > Hooks.
 
 		/**
 		 * Register_backend_styles
@@ -179,7 +179,7 @@ if ( ! class_exists( 'EDT' ) ) {
 			load_plugin_textdomain( 'environment-debug-toolbar', false, dirname( EDT_BASENAME ) . '/languages' );
 		}
 
-		//> Register Hooks.
+		// > Register Hooks.
 
 		/**
 		 * Register_toolbar
