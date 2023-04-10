@@ -31,257 +31,222 @@ define( 'EDT_BASENAME', plugin_basename( EDT_FILE ) );
 
 define( 'EDT_VERSION', '1.0.0' );
 
-if ( ! class_exists( 'EDT' ) ) {
+/**
+ * EDT
+ */
+class EDT {
+
+	// > Unsorted Helpers.
+
+	// > Misc Helpers.
+
+	// > Toolbar Helpers.
+
 	/**
-	 * EDT
+	 * Get_env
+	 *
+	 * @return mixed Name of the environment, or false.
 	 */
-	class EDT {
-
-		/**
-		 * Constructor
-		 */
-		public function __construct() {
-		}
-
-		// > Unsorted Helpers.
-
-		// > Misc Helpers.
-
-		/**
-		 * D
-		 *
-		 * @param  mixed $var Variable to display.
-		 * @return void
-		 */
-		private function d( $var ) {
-			echo '<pre style="max-height:800px;z-index:9999;position:relative;overflow-y:scroll;white-space:pre-wrap;word-wrap:break-word;padding:10px15px;border:1pxsolid#fff;background-color:#161616;text-align:left;line-height:1.5;font-family:Courier;font-size:16px;color:#fff;">';
-			print_r( $var );
-			echo '</pre>';
-		}
-
-		/**
-		 * Dd
-		 *
-		 * @param  mixed $var Variable to display.
-		 * @return void
-		 */
-		private function dd( $var ) {
-			$this->d( $var );
-			exit;
-		}
-
-		// > Toolbar Helpers.
-
-		/**
-		 * Get_env
-		 *
-		 * @return mixed Name of the environment, or false.
-		 */
-		private function get_env() {
-			if ( function_exists( 'getenv' ) ) {
-				if ( getenv( 'WP_ENVIRONMENT_TYPE' ) !== false ) {
-					return getenv( 'WP_ENVIRONMENT_TYPE' );
-				}
-				if ( getenv( 'WP_ENV' ) !== false ) {
-					return getenv( 'WP_ENVIRONMENT_TYPE' );
-				}
+	private function get_env() {
+		if ( function_exists( 'getenv' ) ) {
+			if ( getenv( 'WP_ENVIRONMENT_TYPE' ) !== false ) {
+				return getenv( 'WP_ENVIRONMENT_TYPE' );
 			}
-
-			if ( defined( 'WP_ENVIRONMENT_TYPE' ) ) {
-				return WP_ENVIRONMENT_TYPE;
-			}
-			if ( defined( 'WP_ENV' ) ) {
-				return WP_ENV;
-			}
-
-			return false;
-		}
-
-		/**
-		 * Env_type
-		 *
-		 * @param  string $env Name of the environment.
-		 * @return integer     Environment type number,
-		 */
-		private function env_type( $env ) {
-			if ( ! $env ) {
-				return 0;
-			}
-
-			switch ( strtolower( $env ) ) {
-				case 'local':
-				case 'dev':
-				case 'develop':
-				case 'development':
-					return 1;
-					break;
-				case 'stage':
-				case 'staging':
-				case 'test':
-				case 'testing':
-				case 'accept':
-				case 'acceptance':
-				case 'integration':
-					return 2;
-					break;
-				case 'prod':
-				case 'production':
-				case 'live':
-					return 3;
-					break;
-				default:
-					return 9;
-					break;
+			if ( getenv( 'WP_ENV' ) !== false ) {
+				return getenv( 'WP_ENVIRONMENT_TYPE' );
 			}
 		}
 
-		/**
-		 * Html_label_value
-		 *
-		 * @param  string $label Text to display as label.
-		 * @param  string $value Text to display as value.
-		 * @return string        HTML to display label and value.
-		 */
-		private function html_label_value( $label, $value ) {
-			$html = '';
-			$html .= '<span class="ei-label">' . $label . '</span>';
-			$html .= '<span class="ei-value">' . $value . '</span>';
-
-			return $html;
+		if ( defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+			return WP_ENVIRONMENT_TYPE;
+		}
+		if ( defined( 'WP_ENV' ) ) {
+			return WP_ENV;
 		}
 
-		// > Hooks.
+		return false;
+	}
 
-		/**
-		 * Register_backend_styles
-		 *
-		 * @return void
-		 */
-		public function register_backend_styles() {
-			// Register.
-			wp_register_style(
-				'edt-backend-css', // Name.
-				plugin_dir_url( __FILE__ ) . 'assets/edt.min.css', // URL.
-				array(), // Deps.
-				EDT_VERSION, // Version.
-				'all' // Media.
-			);
-			// Enqueue.
-			wp_enqueue_style( 'edt-backend-css' );
+	/**
+	 * Env_type
+	 *
+	 * @param  string $env Name of the environment.
+	 * @return integer     Environment type number,
+	 */
+	private function env_type( $env ) {
+		if ( ! $env ) {
+			return 0;
 		}
 
-		/**
-		 * Register_translations
-		 *
-		 * @return void
-		 */
-		public function register_translations() {
-			load_plugin_textdomain( 'environment-debug-toolbar', false, dirname( EDT_BASENAME ) . '/languages' );
-		}
-
-		// > Register Hooks.
-
-		/**
-		 * Register_toolbar
-		 *
-		 * @param  object $wp_admin_bar Details about toolbar nodes.
-		 * @return void
-		 */
-		public function register_toolbar( $wp_admin_bar ) {
-			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
-				return;
-			}
-
-			$env  = $this->get_env();
-			$type = $this->env_type( $env );
-
-			$node_title = match ( $type ) {
-				0 => __( 'No Environment Found', 'environment-debug-toolbar' ),
-				1 => __( 'Development', 'environment-debug-toolbar' ),
-				2 => __( 'Staging', 'environment-debug-toolbar' ),
-				3 => __( 'Production', 'environment-debug-toolbar' ),
-				9 => __( 'Unknown Environment', 'environment-debug-toolbar' ),
-				default => '',
-			};
-
-			$wp_admin_bar->add_group(
-				array(
-					'id' => 'edt-group',
-				)
-			);
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-node',
-					'title'  => $node_title,
-					'parent' => 'edt-group',
-					'meta'   => array(
-						'class' => 'env-type-' . $type,
-					),
-				)
-			);
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-wp-debug',
-					'title'  => $this->html_label_value( 'WP_DEBUG', ( WP_DEBUG ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
-
-			if ( ! WP_DEBUG ) {
-				return;
-			}
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-wp-debug-log',
-					'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-wp-debug-display',
-					'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-script-display',
-					'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
-
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-savequeries',
-					'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
-		}
-
-		/**
-		 * Register_hooks
-		 *
-		 * @return void
-		 */
-		public function register_hooks() {
-			// Register backend styles.
-			add_action( 'admin_enqueue_scripts', array( $this, 'register_backend_styles' ) );
-			// Register tranlations.
-			add_action( 'init', array( $this, 'register_translations' ) );
-			// Register toolbar.
-			add_action( 'admin_bar_menu', array( $this, 'register_toolbar' ), 300, 1 );
+		switch ( strtolower( $env ) ) {
+			case 'local':
+			case 'dev':
+			case 'develop':
+			case 'development':
+				return 1;
+			case 'stage':
+			case 'staging':
+			case 'test':
+			case 'testing':
+			case 'accept':
+			case 'acceptance':
+			case 'integration':
+				return 2;
+			case 'prod':
+			case 'production':
+			case 'live':
+				return 3;
+			default:
+				return 9;
 		}
 	}
 
-	$edt = new EDT();
-	$edt->register_hooks();
+	/**
+	 * Html_label_value
+	 *
+	 * @param  string $label Text to display as label.
+	 * @param  string $value Text to display as value.
+	 * @return string        HTML to display label and value.
+	 */
+	private function html_label_value( $label, $value ) {
+		$html  = '';
+		$html .= '<span class="ei-label">' . $label . '</span>';
+		$html .= '<span class="ei-value">' . $value . '</span>';
+
+		return $html;
+	}
+
+	// > Hooks.
+
+	/**
+	 * Register_backend_styles
+	 *
+	 * @return void
+	 */
+	public function register_backend_styles() {
+		// Register.
+		wp_register_style(
+			'edt-backend-css', // Name.
+			plugin_dir_url( EDT_FILE ) . 'assets/edt.min.css', // URL.
+			array(), // Deps.
+			EDT_VERSION, // Version.
+			'all' // Media.
+		);
+		// Enqueue.
+		wp_enqueue_style( 'edt-backend-css' );
+	}
+
+	/**
+	 * Register_translations
+	 *
+	 * @return void
+	 */
+	public function register_translations() {
+		load_plugin_textdomain( 'environment-debug-toolbar', false, dirname( EDT_BASENAME ) . '/languages' );
+	}
+
+	// > Register Hooks.
+
+	/**
+	 * Register_toolbar
+	 *
+	 * @param  object $wp_admin_bar Details about toolbar nodes.
+	 * @return void
+	 */
+	public function register_toolbar( $wp_admin_bar ) {
+		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$env  = $this->get_env();
+		$type = $this->env_type( $env );
+
+		$node_title = match ( $type ) {
+			0 => __( 'No Environment Found', 'environment-debug-toolbar' ),
+			1 => __( 'Development', 'environment-debug-toolbar' ),
+			2 => __( 'Staging', 'environment-debug-toolbar' ),
+			3 => __( 'Production', 'environment-debug-toolbar' ),
+			9 => __( 'Unknown Environment', 'environment-debug-toolbar' ),
+			default => '',
+		};
+
+		$wp_admin_bar->add_group(
+			array(
+				'id' => 'edt-group',
+			)
+		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-node',
+				'title'  => $node_title,
+				'parent' => 'edt-group',
+				'meta'   => array(
+					'class' => 'env-type-' . $type,
+				),
+			)
+		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-wp-debug',
+				'title'  => $this->html_label_value( 'WP_DEBUG', ( WP_DEBUG ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			)
+		);
+
+		if ( ! WP_DEBUG ) {
+			return;
+		}
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-wp-debug-log',
+				'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			)
+		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-wp-debug-display',
+				'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			)
+		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-script-display',
+				'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			)
+		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-savequeries',
+				'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			)
+		);
+	}
+
+	/**
+	 * Register_hooks
+	 *
+	 * @return void
+	 */
+	public function register_hooks() {
+		// Register backend styles.
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_backend_styles' ) );
+		// Register tranlations.
+		add_action( 'init', array( $this, 'register_translations' ) );
+		// Register toolbar.
+		add_action( 'admin_bar_menu', array( $this, 'register_toolbar' ), 300, 1 );
+	}
 }
+
+$edt = new EDT();
+$edt->register_hooks();
 
