@@ -1,11 +1,11 @@
-name: Build release zip
+name: Build zip
 
 on:
   workflow_dispatch
 
 jobs:
   build:
-    name: Build release zip
+    name: Build zip
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -17,9 +17,9 @@ jobs:
         version: latest
         run_install: true
 
-    - name: Generate zip
+    - name: Build zip
       uses: 10up/action-wordpress-plugin-build-zip@stable
       env:
         SLUG: environment-debug-admin-toolbar
       with:
-        retention-days: 1 # Optional; defaults to 5
+        retention-days: 1

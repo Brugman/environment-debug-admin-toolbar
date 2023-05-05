@@ -1,11 +1,11 @@
-name: Deploy to WordPress.org
+name: Update Plugin
 
 on:
   workflow_dispatch
 
 jobs:
   build:
-    name: Deploy to WordPress.org
+    name: Update Plugin
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
