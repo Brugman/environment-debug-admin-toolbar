@@ -1,0 +1,25 @@
+name: Deploy to WordPress.org
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    name: Deploy to WordPress.org
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build plugin
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+        run_install: true
+
+    - name: Send to WordPress
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: environment-debug-admin-toolbar

@@ -1,0 +1,19 @@
+name: Asset & README update
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    name: Asset & README update
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Send to WordPress
+      uses: 10up/action-wordpress-plugin-asset-update@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: environment-debug-admin-toolbar
