@@ -1,7 +1,12 @@
 /.wordpress-org
 /.git
 /.github
+/less
 /node_modules
 
 .distignore
 .gitignore
+Gulpfile.js
+package.json
+pnpm-lock.yaml
+README.md
