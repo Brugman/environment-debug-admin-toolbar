@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Display your environment and debug info in the toolbar.",
   "homepage": "https://github.com/Brugman/environment-debug-admin-toolbar",
-  "license": "MIT",
+  "license": "GPLv3",
   "repository": "github:Brugman/environment-debug-admin-toolbar",
   "scripts": {
     "postinstall": "pnpm gulp --env=prod"
