@@ -237,41 +237,42 @@ class EDT {
 			)
 		);
 
-		if ( ! WP_DEBUG ) {
-			return;
+		if ( WP_DEBUG ) {
+			$wp_admin_bar->add_node(
+				array(
+					'id'     => 'edt-wp-debug-log',
+					'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
+					'parent' => 'edt-node',
+					'meta'   => array(
+						'title' => WP_DEBUG_LOG,
+					),
+				)
+			);
+
+			$wp_admin_bar->add_node(
+				array(
+					'id'     => 'edt-wp-debug-display',
+					'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
+					'parent' => 'edt-node',
+				)
+			);
+
+			$wp_admin_bar->add_node(
+				array(
+					'id'     => 'edt-script-display',
+					'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
+					'parent' => 'edt-node',
+				)
+			);
+
+			$wp_admin_bar->add_node(
+				array(
+					'id'     => 'edt-savequeries',
+					'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
+					'parent' => 'edt-node',
+				)
+			);
 		}
-
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-wp-debug-log',
-				'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
-			)
-		);
-
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-wp-debug-display',
-				'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
-			)
-		);
-
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-script-display',
-				'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
-			)
-		);
-
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-savequeries',
-				'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
-			)
-		);
 
 		$wp_admin_bar->add_node(
 			array(
