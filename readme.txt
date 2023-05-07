@@ -29,6 +29,15 @@ If you want to see a another category, please [get in touch](https://github.com/
 
 == Changelog ==
 
+= 1.1.0 =
+* Updated bar colors.
+* Added PHP version.
+* Added environment as title to the env type.
+* Added filters to set environments to types.
+* Added a filter for who sees the bar.
+* Made plugin compatible with WP 5.5.
+* Made plugin compatible with PHP 7.4.
+
 = 1.0.0 =
 * Initial release.
 
