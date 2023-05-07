@@ -71,34 +71,60 @@ class EDT {
 	 * Env_type
 	 *
 	 * @param  string $env Name of the environment.
-	 * @return integer     Environment type number,
+	 * @return integer     Environment type number.
 	 */
 	private function env_type( $env ) {
 		if ( ! $env ) {
 			return 0;
 		}
 
-		switch ( strtolower( $env ) ) {
-			case 'local':
-			case 'dev':
-			case 'develop':
-			case 'development':
-				return 1;
-			case 'stage':
-			case 'staging':
-			case 'test':
-			case 'testing':
-			case 'accept':
-			case 'acceptance':
-			case 'integration':
-				return 2;
-			case 'prod':
-			case 'production':
-			case 'live':
-				return 3;
-			default:
-				return 9;
+		$env = strtolower( $env );
+
+		$env_local = apply_filters(
+			'edt_env_local',
+			array(
+				'local',
+				'development',
+				'develop',
+				'dev',
+			)
+		);
+
+		if ( in_array( $env, $env_local ) ) {
+			return 1;
 		}
+
+		$env_staging = apply_filters(
+			'edt_env_staging',
+			array(
+				'staging',
+				'stage',
+				'testing',
+				'test',
+				'acceptance',
+				'accept',
+				'integration',
+			)
+		);
+
+		if ( in_array( $env, $env_staging ) ) {
+			return 2;
+		}
+
+		$env_production = apply_filters(
+			'edt_env_production',
+			array(
+				'production',
+				'prod',
+				'live',
+			)
+		);
+
+		if ( in_array( $env, $env_production ) ) {
+			return 6;
+		}
+
+		return 9;
 	}
 
 	/**
