@@ -2,5 +2,6 @@
 node_modules/
 releases/
 *.bat
+*.map
 *.sublime-*
 notes.txt
