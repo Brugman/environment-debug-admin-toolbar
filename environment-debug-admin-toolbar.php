@@ -177,7 +177,7 @@ class EDT {
 	 * @return void
 	 */
 	public function register_toolbar( $wp_admin_bar ) {
-		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+		if ( ! is_admin() || ! current_user_can( apply_filters( 'edt_capability_check', 'manage_options' ) ) ) {
 			return;
 		}
 
