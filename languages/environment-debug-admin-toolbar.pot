@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Environment Debug Admin Toolbar 1.0.0\n"
+"Project-Id-Version: Environment Debug Admin Toolbar 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/environment-debug-admin-toolbar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-10T14:21:15+00:00\n"
+"POT-Creation-Date: 2023-05-07T01:46:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: environment-debug-toolbar\n"
@@ -30,22 +30,26 @@ msgstr ""
 msgid "https://mediumrare.dev/"
 msgstr ""
 
-#: environment-debug-admin-toolbar.php:165
+#: environment-debug-admin-toolbar.php:139
 msgid "No Environment Found"
 msgstr ""
 
-#: environment-debug-admin-toolbar.php:166
+#: environment-debug-admin-toolbar.php:141
 msgid "Development"
 msgstr ""
 
-#: environment-debug-admin-toolbar.php:167
+#: environment-debug-admin-toolbar.php:143
 msgid "Staging"
 msgstr ""
 
-#: environment-debug-admin-toolbar.php:168
+#: environment-debug-admin-toolbar.php:145
 msgid "Production"
 msgstr ""
 
-#: environment-debug-admin-toolbar.php:169
+#: environment-debug-admin-toolbar.php:147
 msgid "Unknown Environment"
+msgstr ""
+
+#: environment-debug-admin-toolbar.php:226
+msgid "Your env is set to:"
 msgstr ""
