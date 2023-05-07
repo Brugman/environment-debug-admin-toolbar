@@ -1,7 +1,8 @@
 2023.05.07 - version 1.1.0
  * Updated bar colors.
  * Added PHP version.
- * Added environment as title to the env type.
+ * Added actual environment as title to the env type.
+ * Added actual log file as title to WP_DEBUG_LOG.
  * Added filters to set environments to types.
  * Added a filter for who sees the bar.
  * Made plugin compatible with WP 5.5.
