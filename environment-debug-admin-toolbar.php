@@ -272,6 +272,14 @@ class EDT {
 				'parent' => 'edt-node',
 			)
 		);
+
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'edt-php',
+				'title'  => $this->html_label_value( 'PHP', phpversion() ),
+				'parent' => 'edt-node',
+			)
+		);
 	}
 
 	/**
