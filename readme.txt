@@ -1,7 +1,7 @@
 === Environment Debug Admin Toolbar ===
 Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
-Requires at least: 6.2
+Requires at least: 5.5
 Tested up to: 6.2
 Stable tag: 1.0.0
 License: GPLv3

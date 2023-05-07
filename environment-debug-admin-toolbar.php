@@ -14,7 +14,7 @@
  * Plugin Name:       Environment Debug Admin Toolbar
  * Description:       Display your environment and debug info in the toolbar.
  * Version:           1.0.0
- * Requires at least: 6.2
+ * Requires at least: 5.5
  * Requires PHP:      8.0
  * Author:            Medium Rare
  * Author URI:        https://mediumrare.dev/
