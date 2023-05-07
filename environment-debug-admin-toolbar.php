@@ -15,7 +15,7 @@
  * Description:       Display your environment and debug info in the toolbar.
  * Version:           1.0.0
  * Requires at least: 5.5
- * Requires PHP:      8.0
+ * Requires PHP:      7.4
  * Author:            Medium Rare
  * Author URI:        https://mediumrare.dev/
  * License:           GPL v3
@@ -102,6 +102,29 @@ class EDT {
 	}
 
 	/**
+	 * Env_type_label
+	 *
+	 * @param  string $type_id Environment type number.
+	 * @return string          Name of the environment type.
+	 */
+	private function env_type_label( $type_id ) {
+		switch ( $type_id ) {
+			case 0:
+				return __( 'No Environment Found', 'environment-debug-toolbar' );
+			case 1:
+				return __( 'Development', 'environment-debug-toolbar' );
+			case 2:
+				return __( 'Staging', 'environment-debug-toolbar' );
+			case 6:
+				return __( 'Production', 'environment-debug-toolbar' );
+			case 9:
+				return __( 'Unknown Environment', 'environment-debug-toolbar' );
+			default:
+				return '';
+		}
+	}
+
+	/**
 	 * Html_label_value
 	 *
 	 * @param  string $label Text to display as label.
@@ -158,17 +181,9 @@ class EDT {
 			return;
 		}
 
-		$env  = $this->get_env();
-		$type = $this->env_type( $env );
-
-		$node_title = match ( $type ) {
-			0 => __( 'No Environment Found', 'environment-debug-toolbar' ),
-			1 => __( 'Development', 'environment-debug-toolbar' ),
-			2 => __( 'Staging', 'environment-debug-toolbar' ),
-			3 => __( 'Production', 'environment-debug-toolbar' ),
-			9 => __( 'Unknown Environment', 'environment-debug-toolbar' ),
-			default => '',
-		};
+		$env       = $this->get_env();
+		$type_id   = $this->env_type( $env );
+		$type_name = $this->env_type_label( $type_id );
 
 		$wp_admin_bar->add_group(
 			array(
@@ -179,7 +194,7 @@ class EDT {
 		$wp_admin_bar->add_node(
 			array(
 				'id'     => 'edt-node',
-				'title'  => $node_title,
+				'title'  => $type_name,
 				'parent' => 'edt-group',
 				'meta'   => array(
 					'class' => 'env-type-' . $type,
