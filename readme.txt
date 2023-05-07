@@ -14,7 +14,7 @@ This plugin will tell you what environment type you are on, and what the `WP_DEB
 
 If you have only one version of your site this plugin may not be for you.
 
-Make sure every version of your site has its ENV defined in the `wp-config.php`. We support both the new official `WP_ENVIRONMENT_TYPE` constant, and the community classic `WP_ENV`.
+Make sure every version of your site has its *ENV* defined in the `wp-config.php`. We support both the new official `WP_ENVIRONMENT_TYPE` constant, and the community classic `WP_ENV`.
 
 `define( 'WP_ENVIRONMENT_TYPE', 'production' );`
 
@@ -22,7 +22,7 @@ Make sure every version of your site has its ENV defined in the `wp-config.php`.
 
 = What are environment types? =
 
-Instead of displaying the environment you've set, we show types. A type is a group of environments that roughly have the same purpose.
+Instead of displaying the exact environment you've set, we show types. A type is a group of environments that roughly have the same purpose.
 
 Like `local`, `dev`, 'develop' and `development`.
 
@@ -63,7 +63,8 @@ By default, only Administrators see the bar. You can change who sees the bar wit
 
 = Can I set my own colors? =
 
-`add_action( 'admin_head', function () {
+`
+add_action( 'admin_head', function () {
     echo '<style>
     #wp-admin-bar-edt-group .env-type-1 { background-color: rgba(255,255,255,.1); }
     #wp-admin-bar-edt-group .env-type-2 { background-color: #59B122; }
@@ -71,7 +72,8 @@ By default, only Administrators see the bar. You can change who sees the bar wit
     #wp-admin-bar-edt-group .env-type-9 { background-color: #B12229; }
     #wp-admin-bar-edt-group .env-type-0 { background-color: #B12229; }
     </style>';
-});`
+});
+`
 
 = Can I disable all styles? =
 
