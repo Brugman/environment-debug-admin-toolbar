@@ -83,6 +83,9 @@ Sure. You can disable our CSS with this snippet:
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed the name of a filter.
+
 = 1.1.0 =
 * Updated bar colors.
 * Added PHP version.

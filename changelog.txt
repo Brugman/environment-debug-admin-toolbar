@@ -1,3 +1,6 @@
+2023.05.08 - version 1.1.1
+ * Fixed the name of a filter.
+
 2023.05.07 - version 1.1.0
  * Updated bar colors.
  * Added PHP version.
