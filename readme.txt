@@ -18,7 +18,23 @@ Make sure every version of your site has its *ENV* defined in wp-config.php. We 
 
 `define( 'WP_ENVIRONMENT_TYPE', 'production' );`
 
+== Medium Rare ==
+
+We hope you like this Medium Rare plugin. We take a lot of pride in our work, and try to make it the absolute best we can.
+
+This plugin is fully free, and will never have a pro version. A small gift, from us, to you.
+
+If you're interested in our other plugins, and future plugins, we invite you to visit our website at [mediumrare.dev](https://mediumrare.dev/). Our newsletter is the best way to never miss a Medium Rare plugin launch.
+
 == Frequently Asked Questions ==
+
+= What users see the toolbar? =
+
+By default, only **Administrators** see the bar. You can change who sees the bar with the following snippet. This example enables the bar for **Editors** as well:
+
+`add_filter( 'edt_capability_check', function ( $capability ) {
+    return 'edit_posts';
+});`
 
 = What are environment types? =
 
@@ -50,14 +66,6 @@ Please make sure the environment names are lowercased.
 = Can you support more types? =
 
 Perhaps, if you can convince us. Please create a GitHub issue, so we can discuss your use-case.
-
-= What users see the toolbar? =
-
-By default, only Administrators see the bar. You can change who sees the bar with the following snippet. This example enables the bar for **Editors** as well:
-
-`add_filter( 'edt_capability_check', function ( $capability ) {
-    return 'edit_posts';
-});`
 
 = Can I set my own colors? =
 
