@@ -10,11 +10,11 @@ Display your environment and debug info in the toolbar.
 
 == Description ==
 
-This plugin will tell you what environment type you are on, and what the `WP_DEBUG` settings are.
+This plugin will tell you what environment type you are on, and what the debug settings are.
 
-If you have only one version of your site this plugin may not be for you.
+If you have only one version of your site this plugin may not be useful to you.
 
-Make sure every version of your site has its *ENV* defined in the `wp-config.php`. We support both the new official `WP_ENVIRONMENT_TYPE` constant, and the community classic `WP_ENV`.
+Make sure every version of your site has its *ENV* defined in wp-config.php. We support both the new official WP_ENVIRONMENT_TYPE constant, and the community classic WP_ENV.
 
 `define( 'WP_ENVIRONMENT_TYPE', 'production' );`
 
@@ -22,18 +22,16 @@ Make sure every version of your site has its *ENV* defined in the `wp-config.php
 
 = What are environment types? =
 
-Instead of displaying the exact environment you've set, we show types. A type is a group of environments that roughly have the same purpose.
-
-Like `local`, `dev`, 'develop' and `development`.
+Instead of displaying the exact environment you've set, we show types. A type is a group of environments that roughly have the same purpose. Like local, dev, develop and development.
 
 = Can you support another environment? =
 
-If you've found a common environment that we do not yet recognize as one of the three types, please let us know and we'll gladly add it.
+If you've found a common environment that we do not yet recognize as part of a type, please let us know and we'll gladly add it.
 
 If you have a rare, custom, or localized environment name, we won't be adding those. However, you can add support for them yourself, with these snippets:
 
 `add_filter( 'edt_env_local', function ( $environments ) {
-    $environments[] = 'my_dev_env';
+    $environments[] = 'daring_development';
     return $environments;
 });`
 
@@ -47,11 +45,11 @@ If you have a rare, custom, or localized environment name, we won't be adding th
     return $environments;
 });`
 
-Please make sure they are completely lowercase.
+Please make sure the environment names are lowercased.
 
 = Can you support more types? =
 
-Yes, if you can convince us. Please create a GitHub issue, so we can discuss your use-case.
+Perhaps, if you can convince us. Please create a GitHub issue, so we can discuss your use-case.
 
 = What users see the toolbar? =
 
@@ -63,17 +61,9 @@ By default, only Administrators see the bar. You can change who sees the bar wit
 
 = Can I set my own colors? =
 
-~~~
-add_action( 'admin_head', function () {
-    echo '<style>
-    #wp-admin-bar-edt-group .env-type-1 { background-color: rgba(255,255,255,.1); }
-    #wp-admin-bar-edt-group .env-type-2 { background-color: #59B122; }
-    #wp-admin-bar-edt-group .env-type-6 { background-color: #2271B1; }
-    #wp-admin-bar-edt-group .env-type-9 { background-color: #B12229; }
-    #wp-admin-bar-edt-group .env-type-0 { background-color: #B12229; }
-    </style>';
-});
-~~~
+Yeah. Like with all CSS, you can override it:
+
+`#wp-admin-bar-edt-group .env-type-1 { background-color: #f09; }`
 
 = Can I disable all styles? =
 
