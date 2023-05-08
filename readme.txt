@@ -63,7 +63,8 @@ By default, only Administrators see the bar. You can change who sees the bar wit
 
 = Can I set my own colors? =
 
-`add_action( 'admin_head', function () {
+~~~
+add_action( 'admin_head', function () {
     echo '<style>
     #wp-admin-bar-edt-group .env-type-1 { background-color: rgba(255,255,255,.1); }
     #wp-admin-bar-edt-group .env-type-2 { background-color: #59B122; }
@@ -71,7 +72,8 @@ By default, only Administrators see the bar. You can change who sees the bar wit
     #wp-admin-bar-edt-group .env-type-9 { background-color: #B12229; }
     #wp-admin-bar-edt-group .env-type-0 { background-color: #B12229; }
     </style>';
-});`
+});
+~~~
 
 = Can I disable all styles? =
 
