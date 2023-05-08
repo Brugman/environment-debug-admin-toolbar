@@ -46,7 +46,7 @@ If you've found a common environment that we do not yet recognize as part of a t
 
 If you have a rare, custom, or localized environment name, we won't be adding those. However, you can add support for them yourself, with these snippets:
 
-`add_filter( 'edt_env_local', function ( $environments ) {
+`add_filter( 'edt_env_development', function ( $environments ) {
     $environments[] = 'daring_development';
     return $environments;
 });`
