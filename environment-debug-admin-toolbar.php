@@ -80,17 +80,17 @@ class EDT {
 
 		$env = strtolower( $env );
 
-		$env_local = apply_filters(
-			'edt_env_local',
+		$env_development = apply_filters(
+			'edt_env_development',
 			array(
-				'local',
 				'development',
 				'develop',
 				'dev',
+				'local',
 			)
 		);
 
-		if ( in_array( $env, $env_local ) ) {
+		if ( in_array( $env, $env_development ) ) {
 			return 1;
 		}
 
