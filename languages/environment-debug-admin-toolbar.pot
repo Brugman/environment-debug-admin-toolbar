@@ -2,7 +2,7 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Environment Debug Admin Toolbar 1.1.1\n"
+"Project-Id-Version: Environment & Debug Bar 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/environment-debug-admin-toolbar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Domain: environment-debug-toolbar\n"
 
 #. Plugin Name of the plugin
-msgid "Environment Debug Admin Toolbar"
+msgid "Environment & Debug Bar"
 msgstr ""
 
 #. Description of the plugin

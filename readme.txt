@@ -1,4 +1,4 @@
-=== Environment Debug Admin Toolbar ===
+=== Environment & Debug Bar ===
 Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
 Requires at least: 5.5
