@@ -67,6 +67,14 @@ Please make sure the environment names are lowercased.
 
 Perhaps, if you can convince us. Please create a GitHub issue, so we can discuss your use-case.
 
+= Can I show the toolbar on the frontend as well? =
+
+You can, with the snippet below.
+
+Keep in mind that if you have a site where the end users are logged in, and see the toolbar on the frontend, you probably don't want to bother them by showing the environment info.
+
+`add_filter( 'edt_show_on_frontend', '__return_true' );`
+
 = Can I set my own colors? =
 
 Yeah. Like with all CSS, you can override it:
