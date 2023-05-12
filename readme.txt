@@ -91,6 +91,9 @@ Sure. You can disable our CSS with this snippet:
 
 == Changelog ==
 
+= 1.2.0 =
+* Added bar to the frontend behind a filter.
+
 = 1.1.1 =
 * Fixed the name of a filter.
 
