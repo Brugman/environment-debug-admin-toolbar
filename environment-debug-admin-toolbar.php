@@ -186,6 +186,28 @@ class EDT {
 	}
 
 	/**
+	 * Register_frontend_styles
+	 *
+	 * @return void
+	 */
+	public function register_frontend_styles() {
+		// Abort unless filter returns true.
+		if ( ! apply_filters( 'edt_show_on_frontend', false ) ) {
+			return;
+		}
+		// Register.
+		wp_register_style(
+			'edt-frontend-css', // Name.
+			plugin_dir_url( EDT_FILE ) . 'assets/edt.min.css', // URL.
+			array(), // Deps.
+			EDT_VERSION, // Version.
+			'all' // Media.
+		);
+		// Enqueue.
+		wp_enqueue_style( 'edt-frontend-css' );
+	}
+
+	/**
 	 * Register_translations
 	 *
 	 * @return void
@@ -203,7 +225,12 @@ class EDT {
 	 * @return void
 	 */
 	public function register_toolbar( $wp_admin_bar ) {
-		if ( ! is_admin() || ! current_user_can( apply_filters( 'edt_capability_check', 'manage_options' ) ) ) {
+		// Abort on the frontend unless filter returns true.
+		if ( ! is_admin() && ! apply_filters( 'edt_show_on_frontend', false ) ) {
+			return;
+		}
+		// Abort if the current user does not meet the capability.
+		if ( ! current_user_can( apply_filters( 'edt_capability_check', 'manage_options' ) ) ) {
 			return;
 		}
 
@@ -291,6 +318,8 @@ class EDT {
 	public function register_hooks() {
 		// Register backend styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_backend_styles' ) );
+		// Register frontend styles.
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_styles' ) );
 		// Register tranlations.
 		add_action( 'init', array( $this, 'register_translations' ) );
 		// Register toolbar.
