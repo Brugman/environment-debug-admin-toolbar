@@ -33,7 +33,7 @@ If you're interested in our other plugins, and future plugins, we invite you to 
 By default, only **Administrators** see the bar. You can change who sees the bar with the following snippet. This example enables the bar for **Editors** as well:
 
 `add_filter( 'edt_capability_check', function ( $capability ) {
-    return 'edit_posts';
+    return 'edit_pages';
 });`
 
 = What are environment types? =
