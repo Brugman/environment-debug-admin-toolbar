@@ -1,4 +1,4 @@
-# Environment & Debug Admin Toolbar
+# Environment & Debug Bar
 
 > A WordPress plugin that displays the environment and debug info in the toolbar.
 
