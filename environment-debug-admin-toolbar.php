@@ -247,7 +247,7 @@ class EDT {
 			'title'  => $type_name,
 			'parent' => 'edt-group',
 			'meta'   => [
-				'title' => __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env(),
+				'title' => ( $this->get_env() ? __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env() : '' ),
 				'class' => 'env-type-' . $type_id,
 			],
 		]);
