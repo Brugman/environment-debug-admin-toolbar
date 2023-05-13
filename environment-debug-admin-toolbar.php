@@ -82,12 +82,12 @@ class EDT {
 
 		$env_development = apply_filters(
 			'edt_env_development',
-			array(
+			[
 				'development',
 				'develop',
 				'dev',
 				'local',
-			)
+			]
 		);
 
 		if ( in_array( $env, $env_development ) ) {
@@ -96,7 +96,7 @@ class EDT {
 
 		$env_staging = apply_filters(
 			'edt_env_staging',
-			array(
+			[
 				'staging',
 				'stage',
 				'testing',
@@ -104,7 +104,7 @@ class EDT {
 				'acceptance',
 				'accept',
 				'integration',
-			)
+			]
 		);
 
 		if ( in_array( $env, $env_staging ) ) {
@@ -113,11 +113,11 @@ class EDT {
 
 		$env_production = apply_filters(
 			'edt_env_production',
-			array(
+			[
 				'production',
 				'prod',
 				'live',
-			)
+			]
 		);
 
 		if ( in_array( $env, $env_production ) ) {
@@ -177,7 +177,7 @@ class EDT {
 		wp_register_style(
 			'edt-backend-css', // Name.
 			plugin_dir_url( EDT_FILE ) . 'assets/edt.min.css', // URL.
-			array(), // Deps.
+			[], // Deps.
 			EDT_VERSION, // Version.
 			'all' // Media.
 		);
@@ -199,7 +199,7 @@ class EDT {
 		wp_register_style(
 			'edt-frontend-css', // Name.
 			plugin_dir_url( EDT_FILE ) . 'assets/edt.min.css', // URL.
-			array(), // Deps.
+			[], // Deps.
 			EDT_VERSION, // Version.
 			'all' // Media.
 		);
@@ -238,76 +238,60 @@ class EDT {
 		$type_id   = $this->env_type( $env );
 		$type_name = $this->env_type_label( $type_id );
 
-		$wp_admin_bar->add_group(
-			array(
-				'id' => 'edt-group',
-			)
-		);
+		$wp_admin_bar->add_group([
+			'id' => 'edt-group',
+		]);
 
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-node',
-				'title'  => $type_name,
-				'parent' => 'edt-group',
-				'meta'   => array(
-					'title' => __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env(),
-					'class' => 'env-type-' . $type_id,
-				),
-			)
-		);
+		$wp_admin_bar->add_node([
+			'id'     => 'edt-node',
+			'title'  => $type_name,
+			'parent' => 'edt-group',
+			'meta'   => [
+				'title' => __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env(),
+				'class' => 'env-type-' . $type_id,
+			],
+		]);
 
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-wp-debug',
-				'title'  => $this->html_label_value( 'WP_DEBUG', ( WP_DEBUG ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
-			)
-		);
+		$wp_admin_bar->add_node([
+			'id'     => 'edt-wp-debug',
+			'title'  => $this->html_label_value( 'WP_DEBUG', ( WP_DEBUG ? 'true' : 'false' ) ),
+			'parent' => 'edt-node',
+		]);
 
 		if ( WP_DEBUG ) {
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-wp-debug-log',
-					'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-					'meta'   => array(
-						'title' => WP_DEBUG_LOG,
-					),
-				)
-			);
+			$wp_admin_bar->add_node([
+				'id'     => 'edt-wp-debug-log',
+				'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+				'meta'   => [
+					'title' => WP_DEBUG_LOG,
+				],
+			]);
 
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-wp-debug-display',
-					'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
+			$wp_admin_bar->add_node([
+				'id'     => 'edt-wp-debug-display',
+				'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			]);
 
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-script-display',
-					'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
+			$wp_admin_bar->add_node([
+				'id'     => 'edt-script-display',
+				'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			]);
 
-			$wp_admin_bar->add_node(
-				array(
-					'id'     => 'edt-savequeries',
-					'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
-					'parent' => 'edt-node',
-				)
-			);
+			$wp_admin_bar->add_node([
+				'id'     => 'edt-savequeries',
+				'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
+				'parent' => 'edt-node',
+			]);
 		}
 
-		$wp_admin_bar->add_node(
-			array(
-				'id'     => 'edt-php',
-				'title'  => $this->html_label_value( 'PHP', phpversion() ),
-				'parent' => 'edt-node',
-			)
-		);
+		$wp_admin_bar->add_node([
+			'id'     => 'edt-php',
+			'title'  => $this->html_label_value( 'PHP', phpversion() ),
+			'parent' => 'edt-node',
+		]);
 	}
 
 	/**
@@ -317,13 +301,13 @@ class EDT {
 	 */
 	public function register_hooks() {
 		// Register backend styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_backend_styles' ) );
+		add_action( 'admin_enqueue_scripts', [ $this, 'register_backend_styles' ] );
 		// Register frontend styles.
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_styles' ) );
+		add_action( 'wp_enqueue_scripts', [ $this, 'register_frontend_styles' ] );
 		// Register tranlations.
-		add_action( 'init', array( $this, 'register_translations' ) );
+		add_action( 'init', [ $this, 'register_translations' ] );
 		// Register toolbar.
-		add_action( 'admin_bar_menu', array( $this, 'register_toolbar' ), 300, 1 );
+		add_action( 'admin_bar_menu', [ $this, 'register_toolbar' ], 300, 1 );
 	}
 }
 
