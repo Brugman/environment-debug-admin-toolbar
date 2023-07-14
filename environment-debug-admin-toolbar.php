@@ -274,6 +274,14 @@ class EDT {
 				'parent' => 'edt-node',
 			]);
 
+			$wp_development_mode = ( function_exists('wp_get_development_mode') ? wp_get_development_mode() : '' );
+
+			$wp_admin_bar->add_node([
+				'id'     => 'edt-wp-development-mode',
+				'title'  => $this->html_label_value( 'WP_DEVELOPMENT_MODE', $wp_development_mode ),
+				'parent' => 'edt-node',
+			]);
+
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-script-display',
 				'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
