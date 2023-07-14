@@ -10,12 +10,17 @@
         .ab-item {
             display: flex !important;
             justify-content: space-between;
+            align-items: center;
             gap: 1.5rem;
+            &:hover {
+                background-color: fade( #fff, 10% );
+            }
         }
     }
     .ei-label {
     }
     .ei-value {
+        min-width: 1.5rem;
         text-align: right;
     }
 }
