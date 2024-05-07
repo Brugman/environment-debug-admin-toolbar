@@ -3,7 +3,7 @@ Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
 Requires at least: 5.5
 Tested up to: 6.5
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 
 Display your environment and debug info in the toolbar.
@@ -90,6 +90,9 @@ Sure. You can disable our CSS with this snippet:
 });`
 
 == Changelog ==
+
+= 1.3.2 =
+* Fixed wrong variable use for getenv('WP_ENV') users.
 
 = 1.3.1 =
 * Checked compatibility with WP 6.4.
