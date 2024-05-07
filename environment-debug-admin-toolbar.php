@@ -53,7 +53,7 @@ class EDT {
 				return getenv( 'WP_ENVIRONMENT_TYPE' );
 			}
 			if ( getenv( 'WP_ENV' ) !== false ) {
-				return getenv( 'WP_ENVIRONMENT_TYPE' );
+				return getenv( 'WP_ENV' );
 			}
 		}
 
