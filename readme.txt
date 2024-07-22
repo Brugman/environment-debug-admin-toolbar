@@ -2,7 +2,7 @@
 Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
 Requires at least: 5.5
-Tested up to: 6.5
+Tested up to: 6.6
 Stable tag: 1.3.2
 License: GPLv3
 
