@@ -18,13 +18,17 @@ Make sure every version of your site has its *ENV* defined in wp-config.php. We 
 
 `define( 'WP_ENVIRONMENT_TYPE', 'production' );`
 
-== Medium Rare ==
+= Medium Rare =
 
 We hope you like this Medium Rare plugin. We take a lot of pride in our work, and try to make it the absolute best we can.
 
 This plugin is fully free, and will never have a pro version. A small gift, from us, to you.
 
 If you're interested in our other plugins, and future plugins, we invite you to visit our website at [mediumrare.dev](https://mediumrare.dev/). Our newsletter is the best way to never miss a Medium Rare plugin launch.
+
+= Contribute =
+
+If you want to contribute, development takes place on [GitHub](https://github.com/Brugman/environment-debug-admin-toolbar).
 
 == Frequently Asked Questions ==
 
@@ -129,8 +133,3 @@ Sure. You can disable our CSS with this snippet:
 
 = 1.0.0 =
 * Initial release.
-
-== Contribute ==
-
-If you want to contribute, development takes place on [GitHub](https://github.com/Brugman/environment-debug-admin-toolbar).
-
