@@ -36,10 +36,6 @@ define( 'EDT_VERSION', '1.3.3' );
  */
 class EDT {
 
-	// > Unsorted Helpers.
-
-	// > Misc Helpers.
-
 	// > Toolbar Helpers.
 
 	/**
