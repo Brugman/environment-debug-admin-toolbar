@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:       Environment & Debug Bar
  * Description:       Display your environment and debug info in the toolbar.
- * Version:           1.3.3
+ * Version:           1.4.0
  * Requires at least: 5.5
  * Requires PHP:      7.4
  * Author:            Medium Rare
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'EDT_FILE', __FILE__ );
 define( 'EDT_BASENAME', plugin_basename( EDT_FILE ) );
 
-define( 'EDT_VERSION', '1.3.3' );
+define( 'EDT_VERSION', '1.4.0' );
 
 /**
  * EDT

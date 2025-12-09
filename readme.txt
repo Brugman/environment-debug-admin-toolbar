@@ -3,7 +3,7 @@ Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
 Requires at least: 5.5
 Tested up to: 6.9
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPLv3
 
 Display your environment and debug info in the toolbar.
@@ -90,6 +90,9 @@ Sure. You can disable our CSS with this snippet:
 });`
 
 == Changelog ==
+
+= 1.4.0 =
+* Added support for Troy distribution.
 
 = 1.3.3 =
 * Checked compatibility with WP 6.6.
