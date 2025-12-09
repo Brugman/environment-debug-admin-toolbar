@@ -1,0 +1,12 @@
+/.wordpress-org export-ignore
+/.git export-ignore
+/.github export-ignore
+/less export-ignore
+/node_modules export-ignore
+
+.distignore export-ignore
+.gitignore export-ignore
+Gulpfile.js export-ignore
+package.json export-ignore
+pnpm-lock.yaml export-ignore
+README.md export-ignore
