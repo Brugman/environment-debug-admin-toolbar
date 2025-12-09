@@ -22,6 +22,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       environment-debug-toolbar
  * Domain Path:       /languages
+ * Troy:              troy.mediumrare.dev
  */
 
 defined( 'ABSPATH' ) || exit;
