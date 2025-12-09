@@ -5,6 +5,7 @@
 /node_modules
 
 .distignore
+.gitattributes
 .gitignore
 Gulpfile.js
 package.json
