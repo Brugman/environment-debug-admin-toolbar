@@ -235,14 +235,10 @@ class EDT {
 		$type_id   = $this->env_type( $env );
 		$type_name = $this->env_type_label( $type_id );
 
-		$wp_admin_bar->add_group([
-			'id' => 'edt-group',
-		]);
-
 		$wp_admin_bar->add_node([
-			'id'     => 'edt-node',
+			'id'     => 'edt',
 			'title'  => $type_name,
-			'parent' => 'edt-group',
+			'parent' => 'top-secondary',
 			'meta'   => [
 				'title' => ( $this->get_env() ? __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env() : '' ),
 				'class' => 'env-type-' . $type_id,
@@ -252,14 +248,14 @@ class EDT {
 		$wp_admin_bar->add_node([
 			'id'     => 'edt-wp-debug',
 			'title'  => $this->html_label_value( 'WP_DEBUG', ( WP_DEBUG ? 'true' : 'false' ) ),
-			'parent' => 'edt-node',
+			'parent' => 'edt',
 		]);
 
 		if ( WP_DEBUG ) {
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-wp-debug-log',
 				'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
+				'parent' => 'edt',
 				'meta'   => [
 					'title' => WP_DEBUG_LOG,
 				],
@@ -268,7 +264,7 @@ class EDT {
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-wp-debug-display',
 				'title'  => $this->html_label_value( 'WP_DEBUG_DISPLAY', ( WP_DEBUG_DISPLAY ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
+				'parent' => 'edt',
 			]);
 
 			$wp_development_mode = ( function_exists('wp_get_development_mode') ? wp_get_development_mode() : '' );
@@ -276,26 +272,26 @@ class EDT {
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-wp-development-mode',
 				'title'  => $this->html_label_value( 'WP_DEVELOPMENT_MODE', $wp_development_mode ),
-				'parent' => 'edt-node',
+				'parent' => 'edt',
 			]);
 
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-script-display',
 				'title'  => $this->html_label_value( 'SCRIPT_DEBUG', ( SCRIPT_DEBUG ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
+				'parent' => 'edt',
 			]);
 
 			$wp_admin_bar->add_node([
 				'id'     => 'edt-savequeries',
 				'title'  => $this->html_label_value( 'SAVEQUERIES', ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ? 'true' : 'false' ) ),
-				'parent' => 'edt-node',
+				'parent' => 'edt',
 			]);
 		}
 
 		$wp_admin_bar->add_node([
 			'id'     => 'edt-php',
 			'title'  => $this->html_label_value( 'PHP', phpversion() ),
-			'parent' => 'edt-node',
+			'parent' => 'edt',
 		]);
 	}
 
