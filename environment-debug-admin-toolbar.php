@@ -240,7 +240,7 @@ class EDT {
 			'title'  => $type_name,
 			'parent' => 'top-secondary',
 			'meta'   => [
-				'title' => ( $this->get_env() ? __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $this->get_env() : '' ),
+				'title' => ( $env ? __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $env : '' ),
 				'class' => 'env-type-' . $type_id,
 			],
 		]);
