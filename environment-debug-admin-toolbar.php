@@ -133,15 +133,15 @@ class EDT {
 	private function env_type_label( $type_id ) {
 		switch ( $type_id ) {
 			case 0:
-				return __( 'No Environment Found', 'environment-debug-toolbar' );
+				return esc_html__( 'No Environment Found', 'environment-debug-toolbar' );
 			case 1:
-				return __( 'Development', 'environment-debug-toolbar' );
+				return esc_html__( 'Development', 'environment-debug-toolbar' );
 			case 2:
-				return __( 'Staging', 'environment-debug-toolbar' );
+				return esc_html__( 'Staging', 'environment-debug-toolbar' );
 			case 6:
-				return __( 'Production', 'environment-debug-toolbar' );
+				return esc_html__( 'Production', 'environment-debug-toolbar' );
 			case 9:
-				return __( 'Unknown Environment', 'environment-debug-toolbar' );
+				return esc_html__( 'Unknown Environment', 'environment-debug-toolbar' );
 			default:
 				return '';
 		}
@@ -156,8 +156,8 @@ class EDT {
 	 */
 	private function html_label_value( $label, $value ) {
 		$html  = '';
-		$html .= '<span class="ei-label">' . $label . '</span>';
-		$html .= '<span class="ei-value">' . $value . '</span>';
+		$html .= '<span class="ei-label">' . esc_html( $label ) . '</span>';
+		$html .= '<span class="ei-value">' . esc_html( $value ) . '</span>';
 
 		return $html;
 	}
@@ -240,7 +240,7 @@ class EDT {
 			'title'  => $type_name,
 			'parent' => 'top-secondary',
 			'meta'   => [
-				'title' => ( $env ? __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $env : '' ),
+				'title' => ( $env ? esc_attr( __( 'Your env is set to:', 'environment-debug-toolbar' ) . ' ' . $env ) : '' ),
 				'class' => 'env-type-' . $type_id,
 			],
 		]);
@@ -257,7 +257,7 @@ class EDT {
 				'title'  => $this->html_label_value( 'WP_DEBUG_LOG', ( WP_DEBUG_LOG ? 'true' : 'false' ) ),
 				'parent' => 'edt',
 				'meta'   => [
-					'title' => WP_DEBUG_LOG,
+					'title' => esc_attr( WP_DEBUG_LOG ),
 				],
 			]);
 
