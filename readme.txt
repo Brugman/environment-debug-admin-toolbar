@@ -3,7 +3,7 @@ Contributors: mediumraredev, brugman
 Tags: environment, env, debug, staging, production
 Requires at least: 5.5
 Tested up to: 7.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3
 
 Display your environment and debug info in the toolbar.
@@ -94,6 +94,9 @@ Sure. You can disable our CSS with this snippet:
 });`
 
 == Changelog ==
+
+= 1.4.1 =
+* Removed unnecesary custom node group.
 
 = 1.4.0 =
 * Added support for Troy distribution.

@@ -1,3 +1,6 @@
+2026.08.29 - version 1.4.1
+ * Removed unnecesary custom node group.
+
 2025.12.09 - version 1.4.0
  * Added support for Troy distribution.
 
