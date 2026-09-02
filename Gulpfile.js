@@ -2,7 +2,7 @@
  * Medium Rare Gulp template.
  *
  * Template last updated: 2021-06-17.
- * File last updated:     2023-04-10.
+ * File last updated:     2026-09-02.
  */
 
 /**
@@ -32,10 +32,6 @@ var rename       = require( 'gulp-rename' );
 var sourcemaps   = require( 'gulp-sourcemaps' );
 var argv         = require( 'minimist' )( process.argv.slice( 2 ) );
 var log          = require( 'fancy-log' );
-// js
-// var concat       = require( 'gulp-concat' );
-// var uglify       = require( 'gulp-uglify' );
-// var babel        = require( 'gulp-babel' );
 // less
 var less         = require( 'gulp-less' );
 
@@ -65,22 +61,6 @@ console.log( '' );
 /**
  * Error handlers.
  */
-var onErrorJS = function ( err ) {
-    log( '----------------' );
-    log( 'JS has an error!' );
-    log( '----------------' );
-
-    notify.onError({
-        title: "Error in "+err.fileName.replace( /^.*[\\\/]/, '' )+" on line "+err.loc.line,
-        message: err.code+"\n"+err.reasonCode,
-        appID: "Gulp",
-    })( err );
-
-    log( '----------------' );
-
-    this.emit('end');
-};
-
 var onErrorLess = function ( err ) {
     log( '------------------' );
     log( 'Less has an error!' );
@@ -101,29 +81,6 @@ var onErrorLess = function ( err ) {
  * Procedures.
  */
 var app = [];
-
-app.processJS = function ( args ) {
-    // use all the files
-    return gulp.src( args.inputFiles )
-        // catch errors
-        .pipe( plumber( { errorHandler: onErrorJS } ) )
-        // start the sourcemap
-        .pipe( gulpif( config.run_sourcemaps, sourcemaps.init() ) )
-        // compile
-        .pipe( babel( { presets: ['@babel/env'] } ) )
-        // concat the js
-        .pipe( concat( args.outputFile ) )
-        // minify the js
-        .pipe( gulpif( config.run_minification, uglify() ) )
-        // finish the sourcemap
-        .pipe( gulpif( config.run_sourcemaps, sourcemaps.write( '.' ) ) )
-        // place the output file
-        .pipe( gulp.dest( args.outputDir ) )
-        // remove the sourcemap from the stream
-        .pipe( gulpif( config.run_sourcemaps, filter( [ '**/*.js' ] ) ) )
-        // reload the site
-        .pipe( livereload() );
-};
 
 app.processLess = function ( args ) {
     // use all the files
@@ -149,19 +106,6 @@ app.processLess = function ( args ) {
         // reload the site
         .pipe( livereload() );
 };
-
-/**
- * Tasks: JS.
- */
-gulp.task( 'js_plugin', function ( done ) {
-    app.processJS({
-        'name'       : 'plugin js',
-        'inputFiles' : [ dir.input.js+'/edt.js' ],
-        'outputDir'  : dir.output.js,
-        'outputFile' : 'edt.min.js',
-    });
-    done();
-});
 
 /**
  * Tasks: Less.
@@ -190,8 +134,6 @@ gulp.task( 'livereload', function ( done ) {
 gulp.task( 'watch', function () {
     // start livereload
     livereload.listen();
-    // JavaScript
-    // gulp.watch( dir.input.js+'/edt.js', gulp.parallel( 'js_plugin' ) );
     // Less
     gulp.watch( dir.input.less+'/**/*.less', gulp.parallel( 'less_plugin' ) );
     // notify
@@ -206,7 +148,6 @@ gulp.task( 'watch', function () {
  * Task: Default.
  */
 gulp.task( 'default', gulp.parallel(
-    // 'js_plugin',
     'less_plugin'
 ));
 

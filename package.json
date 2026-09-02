@@ -6,7 +6,8 @@
   "license": "GPLv3",
   "repository": "github:Brugman/environment-debug-admin-toolbar",
   "scripts": {
-    "postinstall": "pnpm gulp --env=prod"
+    "watch": "pnpm gulp watch",
+    "build": "pnpm gulp --env=prod"
   },
   "devDependencies": {
     "fancy-log": "^2.0.0",

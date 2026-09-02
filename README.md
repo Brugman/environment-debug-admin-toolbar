@@ -30,8 +30,8 @@ This plugin was developed with:
 
 Command | Minification | Sourcemaps
 :--- |:--- |:---
-`pnpm gulp` | :heavy_minus_sign: | :heavy_check_mark:
-`pnpm gulp --env=prod` | :heavy_check_mark: | :heavy_minus_sign:
+`pnpm run watch` | :heavy_minus_sign: | :heavy_check_mark:
+`pnpm run build` | :heavy_check_mark: | :heavy_minus_sign:
 
 ## Author
 
