@@ -8,23 +8,23 @@ jobs:
     name: Build zip
     runs-on: ubuntu-latest
     steps:
-    - name: Use repo
-      uses: actions/checkout@v7
+      - name: Use repo
+        uses: actions/checkout@v7
 
-    - name: Use PNPM
-      uses: pnpm/action-setup@v6
-      with:
-        version: 10
+      - name: Use PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build assets
-      run: pnpm run build
+      - name: Build assets
+        run: pnpm run build
 
-    - name: Build zip
-      uses: 10up/action-wordpress-plugin-build-zip@stable
-      env:
-        SLUG: environment-debug-admin-toolbar
-      with:
-        retention-days: 1
+      - name: Build zip
+        uses: 10up/action-wordpress-plugin-build-zip@stable
+        env:
+          SLUG: environment-debug-admin-toolbar
+        with:
+          retention-days: 1

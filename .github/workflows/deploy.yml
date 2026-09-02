@@ -8,23 +8,23 @@ jobs:
     name: Update Plugin
     runs-on: ubuntu-latest
     steps:
-    - name: Use repo
-      uses: actions/checkout@v7
+      - name: Use repo
+        uses: actions/checkout@v7
 
-    - name: Use PNPM
-      uses: pnpm/action-setup@v6
-      with:
-        version: 10
+      - name: Use PNPM
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build assets
-      run: pnpm run build
+      - name: Build assets
+        run: pnpm run build
 
-    - name: Send to WordPress
-      uses: 10up/action-wordpress-plugin-deploy@stable
-      env:
-        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        SLUG: environment-debug-admin-toolbar
+      - name: Send to WordPress
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: environment-debug-admin-toolbar
